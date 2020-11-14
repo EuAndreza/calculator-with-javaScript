@@ -1,0 +1,189 @@
+<html>
+   <head>
+    <style type="text/css">
+       * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'Gloria Hallelujah', cursive;
+   font-size:22px;
+}
+li{
+   list-style:none;
+}
+html {
+   height: 100%;
+   background: white;
+   background: radial-gradient(circle, #fff 24%, #CCE);
+   background-size: cover;
+}
+#container{
+   width: 290px;
+   text-align: center;
+   height:auto;
+   margin:4px auto;
+}
+#calculadora{
+   width: 234px;
+   height: 230px;
+   margin:0 auto;
+   padding:2px;
+   background-color: #65D277;
+}
+.input-valor{
+   margin:8px auto;
+   width:95%;
+   height:30px;
+   font-size: 16px;
+   overflow:hidden;
+   text-align: right;
+   color:#48484D;
+   padding: 4px;
+   background-color:#fff;
+   box-shadow: inset -1px -1px 4px 1px #eee;
+}
+.key li{
+   width:50px;
+   height:30px;
+   border-radius:3px;
+   color:#fff;
+   background-color:#6C73FA;
+   cursor:pointer;
+   float:left;
+   margin: 0px -3px 5px 8px;
+   line-height: 30px;
+   text-align: center;
+   box-shadow: 0px 3px 1px 0px #444651;
+}
+.key li:hover{
+   background-color: #BEF9F0;
+   color: #6C73FA;
+   transition:0.2s;
+}
+.key li:active{
+   box-shadow: 0px 1px 1px 0px #444651;
+}
+.verificar{
+   width: 93.4% !important;
+}
+
+    </style>
+    <script type="text/javascript">
+       /*-----------------------------------------CALCULADORA----------------------------------------------------------*/
+// pego os elementos li e div input
+var btn    = document.querySelectorAll(".key li"),
+   input      = document.querySelector(".input-valor"),
+   operador  = document.querySelectorAll(".operador");
+
+// Percorro o array para usar todas as informações
+for(var i = 0; i < btn.length; i++){
+   document.onkeypress = function(event){
+      var key = event.charCode; // Mudança de keyCode para charCode, por que o firefox não aceitou keyCode
+      //console.log(key);
+      //console.log(String.fromCharCode(47));
+      for(var e = 0; e <= 10; e++){
+         if(key === (48+e)){
+            input.innerHTML += e;
+         }
+      }
+      switch (key){
+         case 42:
+            input.innerHTML += "*";
+            break;
+         case 43:
+            input.innerHTML += "+";
+            break;
+         case 45:
+            input.innerHTML += "-";
+            break;
+         case 46:
+            input.innerHTML += ".";
+            break;
+         case 47:
+            input.innerHTML += "/";
+            break;
+         case 13:
+         case 61:
+            var equacao = input.innerHTML;
+            if(equacao){
+               try {
+                  input.innerHTML = eval(equacao);
+               } catch (e) {
+                  alert('Erro na expressão');
+
+               } 
+            }
+            break;
+         case 67:
+         case 99:
+            input.innerHTML = "";
+            break;                  
+         default:
+            //console.log("Procurando erros?");
+            break;
+      }
+   };
+   btn[i].addEventListener('click',function(){
+      var btnVal   = this.innerHTML,
+         inputVal = input.innerHTML;
+      //console.log(btnVal);
+
+      // crio um clear caso o c for clicado
+      switch (btnVal){
+         case "c":
+            input.innerHTML = "";
+            break;
+         case "=":
+            // Crio a variável de equação aqui eu utilizo a função eval do javascript
+            var equacao = inputVal;
+            
+            if(equacao){
+               try {
+                  input.innerHTML = eval(equacao);
+               } catch (e) {
+                  alert('Erro na expressão');
+
+               } 
+            }
+            break;
+         default:
+            input.innerHTML += btnVal;
+            break;   
+      }
+
+   });
+}
+    </script>
+
+   </head>
+   <body>
+   <section id="calculadora">
+         <!-- Input e clear -->
+         <header class="top">
+            <div class="input-valor"></div>
+         </header>
+         <ul class="key">
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li class="operador">/</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li class="operador">*</li>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li class="operador">-</li>
+            <li>0</li>
+            <li>.</li>
+            <li class="operador">+</li>
+            <li>c</li>
+            <li class="verificar">=</li>
+         </ul>
+      </section>
+   </div>
+   <script type="text/javascript" src="javascripts/script.js"></script> 
+</body>
+  
+</html>

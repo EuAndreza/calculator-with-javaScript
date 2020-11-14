@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calculator</title>
+	<script type="text/javascript" src="calc.js"></script>
+</head>
+<body>
+	<form>
+		<h1>calculadora</h1>
+		<label>Insira um valor</label>
+		<input type="number" id="n1">
+		<label>Selecione uma opção</label>
+		<select id="operacao">
+			<option></option>
+			<option value ="soma">Soma</option>
+			<option value ="sub">Subtração</option>
+			<option value ="mult">Multiplicação</option>
+			<option value ="divi">Divisão</option>
+		</select>
+		<label>Insira o segundo valor</label>
+		<input type="number" id="n2">	
+		<input value="calcular" type="button" onclick="calc()">
+		<p id="exibir"></p>
+	</form>
+
+
+</body>
+</html>
