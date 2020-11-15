@@ -1,0 +1,23 @@
+.MyCalc {
+	justify-content: center;
+	align-items: center;
+	width: 500px;
+	height: 500px;
+	background: #fff;
+	margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+/*
+form {
+	width: 100%;
+	padding: 20px;
+	background: #fff;
+	box-shadow: 0 2px 5px #ccc; 
+}*/
+.ti{
+	font-family: 'Oswald', sans-serif;
+}
+/*body{
+	background-color: red;
+}*/
